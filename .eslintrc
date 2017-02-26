@@ -1,0 +1,37 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise"
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "__DEV__": false,
+    "__TEST__": false,
+    "__PROD__": false,
+    "__COVERAGE__": false,
+    "__API_ROOT__": true,
+    "__CLIENT_ROOT__": true,
+    "__IG_CLIENT_ID__": true,
+    "__STRIPE_PUBLISHABLE_KEY__": true,
+    "__ALGOLIA_APP_ID__": true,
+    "__ALGOLIA_SEARCH_KEY__": true,
+    "__ALGOLIA_ENV__": true,
+    "Stripe": true,
+    "google": true
+  },
+  "rules": {
+    "key-spacing": 0,
+    "jsx-quotes": [2, "prefer-single"],
+    "max-len": 0,
+    "camelcase": 0,
+    "object-curly-spacing": [2, "always"]
+  }
+}

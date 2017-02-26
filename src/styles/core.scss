@@ -1,0 +1,348 @@
+@import 'base';
+@import '~normalize.css/normalize';
+@import './variables/colors';
+@import './scales';
+@import './bgs';
+@import './mixins';
+
+// // --breakpoint-not-small
+// @media (min-width: 30em) {
+// }
+// // --breakpoint-medium
+// @media (min-width: 30em) and (max-width: 60em) {
+// }
+// // --breakpoint-large
+// @media (min-width: 60em) {
+// }
+
+// Some best-practice CSS that's useful for most apps
+// Just remove them if they're not what you want
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'avenir next', avenir, helvetica, 'helvetica neue', ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+  color: $brand-text;
+}
+h1, h2, h3, h4, h5 {
+  color: $brand-primary;
+}
+
+.flx {
+  display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;
+
+  flex:1 1 auto;
+  min-width: 0;
+  min-height: 0;
+
+  flex-direction: column;
+}
+.flx-ns {
+  @media (min-width: 30em) {
+    display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;  /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;
+
+    flex:1 1 auto;
+    min-width: 0;
+    min-height: 0;
+
+    flex-direction: column;
+  }
+}
+.flx-center {
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flx-row {
+  @extend .flx;
+  flex-direction: row;
+}
+.flx-row-ns {
+  @media (min-width: 30em) {
+    flex-direction: row;
+  }
+}
+.flx-column {
+  @extend .flx;
+  flex-direction: column;
+}
+.flx1 {
+  flex: $flx1
+}
+.flx2 {
+  flex: $flx2
+}
+.flx1-ns {
+  flex: $flx1
+}
+.flx2-ns {
+  @media (min-width: 30em) {
+    flex: $flx2
+  }
+}
+.flx3 {
+  flex: $flx3
+}
+.flx4 {
+  flex: $flx4
+}
+.flx5 {
+  flex: $flx5
+}
+.flx6 {
+  flex: $flx6
+}
+.flx7 {
+  flex: $flx7
+}
+.flx8 {
+  flex: $flx8
+}
+.flx9 {
+  flex: $flx9
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.app__button--mock {
+  @include buttonBasics($brand-primary);
+}
+a.app__button {
+  font-weight: $fw5;
+  text-decoration: none;
+}
+.app__button {
+  @include eventercomButton($brand-text);
+
+  > a {
+    color: $brand-text;
+    font-weight: $fw5;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    background-color: transparentize($brand-primary, 0.9);
+  }
+}
+.app__button-nb {
+  @include eventercomButton($brand-primary);
+
+  > a {
+    color: $brand-primary;
+    font-weight: $fw5;
+    text-decoration: none;
+  }
+
+  border: none;
+  &:disabled {
+    background-color: transparentize($brand-primary, 0.9);
+  }
+}
+.bg-purple {
+  background-color: $brand-purple;
+}
+.app__button.white {
+  @include eventercomButton($brand-white);
+}
+.app__button.active {
+  @include eventercomButton($brand-success);
+}
+.app__button.success {
+  @include eventercomButton($brand-success);
+
+  &:disabled {
+    background-color: transparentize($brand-primary, 0.9);
+  }
+}
+.app__button-nb.success {
+  @include eventercomButton($brand-success);
+  border: none;
+
+  &:disabled {
+    background-color: transparentize($brand-primary, 0.9);
+  }
+}
+.b--success {
+  border-color: $brand-success
+}
+.app__button.danger {
+  @include eventercomButton($brand-danger);
+}
+.b--danger {
+  border-color: $brand-danger
+}
+.f--danger {
+  color: $brand-danger
+}
+.app__button.primary {
+  @include eventercomButton($brand-primary);
+  color: $brand-white;
+  background-color: transparentize($brand-primary, 0);
+}
+.app__button.secondary {
+  @include eventercomButton($brand-primary);
+  background-color: transparentize($brand-primary, 0.95);
+}
+.app__button.water_blue {
+  @include eventercomButton($brand-water-blue);
+  background-color: transparentize($brand-water-blue, 0.95);
+}
+.button--blank {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.shadow-0 {
+  -webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.025);
+  -moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.025);
+  box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.025);
+}
+.container__outline {
+  @extend .b--hairline;
+  @extend .shadow-0;
+  background-color: $brand-white;
+}
+.b--hairline {
+  border-color: $brand-secondary;
+  border-width: 0.06rem;
+  border-style: solid;
+}
+.b--hairline-dash {
+  border-color: $brand-secondary;
+  border-width: 0.06rem;
+  border-style: dashed;
+}
+.bb--hairline {
+  border-color: $brand-secondary;
+  border-width: 0.06rem;
+  border-bottom-style:solid
+}
+.invisible {
+  visibility: hidden;
+}
+.brtl-0 {
+  border-top-left-radius:0;
+}
+.brtr-0 {
+  border-top-right-radius:0;
+}
+.brbl-0 {
+  border-bottom-left-radius:0;
+}
+.brbr-0 {
+  border-bottom-right-radius:0;
+}
+.brtl-2 {
+  border-top-left-radius:0.25rem;
+}
+.brtr-2 {
+  border-top-right-radius:0.25rem;
+}
+.brbl-2 {
+  border-bottom-left-radius:0.25rem;
+}
+.brbr-2 {
+  border-bottom-right-radius:0.25rem;
+}
+.bl-0 {
+  border-left: 0;
+}
+.br-0 {
+  border-right: 0;
+}
+.vh-90-l {
+  @media (min-width: 60em) {
+    height: 90vh;
+  }
+}
+.brn-s {
+  @media (max-width: 30em) {
+    border: none;
+  }
+}
+.dn-s {
+  display: none;
+
+  @media (min-width: 30em) {
+    display: block;
+  }
+}
+.dn-m {
+  @media (min-width: 30em) and (max-width: 60em) {
+    display: none;
+  }
+}
+.d-m {
+  display: none;
+
+  @media (min-width: 30em) and (max-width: 60em) {
+    display: block;
+  }
+}
+.d-l {
+  display: none;
+
+  @media (min-width: 60em) {
+    display: block;
+  }
+}
+.overflow-wrap {
+  overflow-wrap: break-word;
+}
+.overflow-s {
+  overflow: hidden;
+
+  @media (min-width: 30em) {
+    overflow: visible;
+  }
+}
+.disabled-bg:disabled {
+  opacity: 0.5;
+  background-color: $brand-primary;
+}
+.sa-flex {
+  display: -webkit-box;
+  -webkit-box-pack: start; /* justify-content */
+  -webkit-box-align: start; /* align-items */
+}
+.sa-db {
+  display: block!important;
+}
+
+// Slick overrides
+.slick-next::before, .slick-prev::before {
+  content: none;
+}
+.slick-arrow.slick-next, .slick-arrow.slick-prev {
+  > svg {
+    @media (max-width: 30em) {
+      display: none
+    }
+  }
+}
+.slick-dots li button:before {
+  font-size: 20px;
+}
+.slick-dots {
+  margin-bottom: 2.5rem;
+}
+.brl-0 {
+  border-left: none
+}

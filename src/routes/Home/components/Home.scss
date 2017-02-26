@@ -1,0 +1,63 @@
+@import "../../../styles/variables/colors.scss";
+@import "../../../styles/mixins.scss";
+@import "../../../styles/functions.scss";
+
+// Hero
+.hero__header--desktop {
+  $url: '../../../assets/eventercom_home.png';
+  background: url($url) no-repeat center top;
+  background-size: contain;
+  height: 24rem;
+  width: 39rem;
+}
+.home__landing {
+  background-image: url('../../../assets/eventercom_mesh.png');
+  background-size: cover;
+  background-position: center;
+  background-color: $brand-primary;
+  width: 100%;
+  height: 100%;
+}
+.hero__header--mobile {
+  $url: '../../../assets/eventercom_home.png';
+  background: url($url) no-repeat center top;
+  background-size: contain;
+  margin-top: -5rem;
+  height: 18rem;
+
+  @media (min-width: 30rem) {
+    height: 21rem;
+  }
+}
+.hero__header--logo {
+  $url: '../../../assets/eventercom_brand.png';
+  @include scaledAssetBG($url, pbAspectPercentage(375, 320));
+}
+.hero__header--eventercom {
+  $url: '../../../assets/eventercom_home.png';
+  background: url($url) no-repeat center top;
+  background-size: contain;
+  height: 10rem;
+}
+.hero__header {
+  font-size: 2rem;
+
+  @media (min-width: 30rem) {
+    font-size: 3rem;
+  }
+}
+.hero__subheader {
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+
+  @media (min-width: 30rem) {
+    font-size: 1.5rem;
+  }
+}
+.hero__tagline {
+  font-size: 1.19rem;
+
+  @media (min-width: 30rem) {
+    font-size: 1.44rem;
+  }
+}

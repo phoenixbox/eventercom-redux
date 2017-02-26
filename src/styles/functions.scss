@@ -1,0 +1,3 @@
+@function pbAspectPercentage($width, $height) {
+  @return percentage($height/$width);
+}

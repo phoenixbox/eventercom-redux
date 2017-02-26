@@ -1,0 +1,14 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/functions.scss";
+
+.route--active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.nav__brand--logo {
+  $url: '../../assets/eventercom_brand.png';
+  background: url($url) no-repeat center top;
+  background-size: contain;
+  height: 3rem;
+  width: 12rem;
+}
