@@ -1,5 +1,5 @@
 // We only need to import the modules necessary for initial render
-import CoreLayout from '../layouts/CoreLayout/CoreLayout'
+import Core from '../layouts/Core/Core'
 import Home from './Home'
 import App from './App'
 import NotFound from './NotFound'
@@ -9,7 +9,7 @@ import NotFound from './NotFound'
 
 export const createRoutes = (store) => ({
   path        : '/',
-  component   : CoreLayout,
+  component   : Core,
   indexRoute  : Home,
   notFoundRoute: Home,
   childRoutes : [

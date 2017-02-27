@@ -6,11 +6,7 @@ import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
 import styles from '../../utils/styles'
 import ReactSidebar from 'react-sidebar'
-
-import './CoreLayout.scss'
-import '../../styles/vendor/notie.scss'
 import '../../styles/core.scss'
-
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -42,16 +38,10 @@ const mapDispatchToProps = (dispatch) => ({
   )
 })
 
-class CoreLayout extends Component {
+class Core extends Component {
   constructor (props) {
     super(props)
-
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this)
-    this.mediaQueryChanged = this.mediaQueryChanged.bind(this)
-
-    this.state = {
-      mql: null
-    }
   }
 
   static propTypes = {
@@ -74,53 +64,10 @@ class CoreLayout extends Component {
     this.props.actions.updateSidebar({ open })
   }
 
-  componentWillMount () {
-    var mql = window.matchMedia(`(min-width: 800px)`)
-    mql.addListener(this.mediaQueryChanged)
-
-    this.setState({
-      mql: mql
-    })
-    // }, () => {
-    //   if (user.id) {
-    //     this.props.actions.updateSidebar({ docked: mql.matches })
-    //   }
-    // })
-  }
-
-  componentWillReceiveProps (nextProps) {
-    // const {
-    //   user: currentUser
-    // } = this.props
-    // const {
-    //   user: nextUser
-    // } = nextProps
-    //
-    // if (!currentUser.id && nextUser.id) {
-    //   this.props.actions.updateSidebar({ docked: this.state.mql.matches })
-    // }
-  }
-
-  componentWillUnmount () {
-    const { mql } = this.state
-    if (mql != null) {
-      mql.removeListener(this.mediaQueryChanged)
-    }
-  }
-
-  mediaQueryChanged () {
-    // const { user } = this.props
-
-    // if (user.id) {
-    //   this.props.actions.updateSidebar({ docked: this.state.mql.matches })
-    // }
-  }
-
   render () {
     const {
       children,
       sidebar,
-      user,
       app,
       location,
       actions,
@@ -131,22 +78,18 @@ class CoreLayout extends Component {
       router
     } = this.context
 
-    const sidebarContent = (
-      <Sidebar user={user}
-        app={app}
-        controls={controls}
-        customers={customers}
-        router={router}
-        pathname={location.pathname}
-        docked={sidebar.docked}
-        setControls={actions.setControls}
-        toggleSidebar={actions.toggleSidebar} />
-    )
-
-    let bgColor = styles.color.loading
-    if (location.pathname === '/') {
-      bgColor = styles.color.white
+    const sidebarProps = {
+      app: app,
+      controls: controls,
+      customers: customers,
+      router: router,
+      pathname: location.pathname,
+      docked: sidebar.docked,
+      setControls: actions.setControls,
+      toggleSidebar: actions.toggleSidebar
     }
+
+    const sidebarContent = <Sidebar {...sidebarProps} />
 
     const sidebarStyles = {
       sidebar: {
@@ -155,7 +98,7 @@ class CoreLayout extends Component {
         backgroundColor: 'white'
       },
       content: {
-        backgroundColor: bgColor
+        backgroundColor: styles.color.loading
       },
       overlay: {
         zIndex: 100
@@ -180,4 +123,4 @@ class CoreLayout extends Component {
   }
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(CoreLayout)
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Core)
