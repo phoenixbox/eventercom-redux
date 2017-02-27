@@ -1,4 +1,5 @@
 # Eventercom-Redux
+[![wercker status](https://app.wercker.com/status/ee705428161ef99a90d3331cae4a398b/s/master "wercker status")](https://app.wercker.com/project/byKey/ee705428161ef99a90d3331cae4a398b)
 --------------
 The eventercom app - rewritten to use redux and webpack.
 
